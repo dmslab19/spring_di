@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="userRepository" class="com.java.spring.repository.UserRepositoryImpl"/>
+	<bean id="passwordEncoder" class="com.java.spring.encoder.SHA256Encoder"/>
+	<bean id="userService" class="com.java.spring.service.UserServiceImpl">
+		<constructor-arg ref="userRepository"/>
+		<constructor-arg ref="passwordEncoder"/>
+<!-- 		setter 기반의 의존성 주입 -->
+<!-- 		<property name="userRepository" ref="userRepository"></property> -->
+<!-- 		<property name="passwordEncoder" ref="passwordEncoder"></property> -->
+	</bean>
+</beans>
